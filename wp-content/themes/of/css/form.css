@@ -1,0 +1,90 @@
+.outtaHere {
+	position:absolute;
+	left:-3000px;
+}
+/*Radio buttons*/
+.radioArea, .radioAreaChecked {
+	float:left;
+	width:14px;
+	height:14px;
+	background: url(../images/btn-radio.png) no-repeat;
+	overflow: hidden;
+}
+.radioAreaChecked {background-position: 0 -14px;}
+
+/*Checkboxes*/
+.checkboxArea, .checkboxAreaChecked {
+	float:left;
+	width:13px;
+	height:13px;
+	overflow: hidden;
+	background: url(../images/bg-checkbox.png) no-repeat;
+}
+.checkboxAreaChecked {background-position: 0 -13px;}
+
+/* Selects */
+.selectArea {
+	position: relative;
+	height: 29px;
+	float:left;
+	color:#999;
+	font-size:13px;
+	line-height:29px;
+	border:1px solid #eee;
+	background:#fff;
+}
+.selectArea .left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:19px;
+	height:100%;
+	background:none;
+	display: block;
+}
+.selectArea a.selectButton {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width:33px;
+	height:29px;
+	background: url(../images/select-button.gif) no-repeat;
+}
+.selectArea .center{
+	height: 29px;
+	line-height:29px;
+	display:block;
+	padding:0 33px 0 8px;
+	background:none;
+}
+/*Selects drop-down*/
+.optionsDivInvisible,
+.optionsDivVisible {
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #eee;
+	background:#fff;
+	display: block;
+	z-index: 30;
+	font-size: 13px;
+}
+.optionsDivInvisible {display: none;}
+.optionsDivVisible ul {
+	margin:0;
+	padding:2px;
+	list-style: none;
+	overflow:auto;
+	max-height:300px;
+}
+.optionsDivVisible a {
+	color: #999;
+	text-decoration: none;
+	display: block;
+	height:1%;
+	padding: 4px 4px;
+}
+.optionsDivVisible a:hover {
+	background-color: #eee;
+	color: #000;
+	text-decoration:none;
+}
