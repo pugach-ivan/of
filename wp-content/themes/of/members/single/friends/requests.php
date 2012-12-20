@@ -2,35 +2,16 @@
 
 <?php if ( bp_has_members( 'type=alphabetical&include=' . bp_get_friendship_requests() ) ) : ?>
 
-	<div id="pag-top" class="pagination no-ajax">
-
-		<div class="pag-count" id="member-dir-count-top">
-
-			<?php bp_members_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="member-dir-pag-top">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
-
-	<ul id="friend-list" class="item-list" role="main">
+	<div id="friend-list" class="item-list" role="main">
 		<?php while ( bp_members() ) : bp_the_member(); ?>
 
-			<li id="friendship-<?php bp_friend_friendship_id(); ?>">
-				<div class="item-avatar">
-					<a href="<?php bp_member_link(); ?>"><?php bp_member_avatar(); ?></a>
-				</div>
-
-				<div class="item">
-					<div class="item-title"><a href="<?php bp_member_link(); ?>"><?php bp_member_name(); ?></a></div>
+			<div class="friends-box" id="friendship-<?php bp_friend_friendship_id(); ?>">
+				<div class="img-frame"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a></div><!-- img-frame -->
+				<div class="txt-frame">
+					<p>From <a href="#"><?php bp_member_name(); ?></a></p>
+					<p>@<?php bp_displayed_user_username(); ?></p>
 					<div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div>
-				</div>
-
+				</div><!-- txt-frame -->
 				<?php do_action( 'bp_friend_requests_item' ); ?>
 
 				<div class="action">
@@ -39,28 +20,28 @@
 
 					<?php do_action( 'bp_friend_requests_item_action' ); ?>
 				</div>
-			</li>
+			</div><!-- friends-box -->
 
 		<?php endwhile; ?>
-	</ul>
+	</div>
 
 	<?php do_action( 'bp_friend_requests_content' ); ?>
 
-	<div id="pag-bottom" class="pagination no-ajax">
+	<div class="viewing-holder">
+		<div class="viewing-box">
+			<div class="pag-count" id="member-dir-count-bottom">
 
-		<div class="pag-count" id="member-dir-count-bottom">
+				<?php bp_members_pagination_count(); ?>
 
-			<?php bp_members_pagination_count(); ?>
+			</div>
 
+			<div class="pagination-links" id="member-dir-pag-bottom">
+
+				<?php bp_members_pagination_links(); ?>
+
+			</div>
 		</div>
-
-		<div class="pagination-links" id="member-dir-pag-bottom">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
+	</div><!-- viewing-holder -->
 
 <?php else: ?>
 

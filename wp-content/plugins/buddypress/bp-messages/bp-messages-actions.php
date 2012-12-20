@@ -44,7 +44,8 @@ function messages_action_view_message() {
 	messages_mark_thread_read( $thread_id );
 
 	// Decrease the unread count in the nav before it's rendered
-	$name = sprintf( __( 'Messages <span>%s</span>', 'buddypress' ), bp_get_total_unread_messages_count() );
+	$name = sprintf( __( 'Messages <div class="amount-frame">
+										<div class="amount-box">%s<span>&nbsp;</span></div><!-- amount-box --></div><!--  amount-box -->', 'buddypress' ), bp_get_total_unread_messages_count() );
 
 	$bp->bp_nav[$bp->messages->slug]['name'] = $name;
 

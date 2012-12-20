@@ -8,21 +8,16 @@
  */
 
 ?>
+<div class="friends-filter item-list-tabs no-ajax" id="subnav" role="navigation">
+	<ul class="link-list">
+		<?php if ( bp_is_my_profile() ) bp_get_options_nav(); ?>
+		<?php if ( bp_is_messages_inbox() || bp_is_messages_sentbox() ) : ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul>
+			<div class="message-search"><?php bp_message_search_form(); ?></div>
 
-		<?php bp_get_options_nav(); ?>
-
+		<?php endif; ?>
 	</ul>
-	
-	<?php if ( bp_is_messages_inbox() || bp_is_messages_sentbox() ) : ?>
-
-		<div class="message-search"><?php bp_message_search_form(); ?></div>
-
-	<?php endif; ?>
-
-</div><!-- .item-list-tabs -->
+</div><!-- friends-filter -->
 
 <?php
 

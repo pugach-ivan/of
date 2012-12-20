@@ -8,11 +8,9 @@
  */
 
 ?>
-
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul>
+<div class="friends-filter item-list-tabs no-ajax" id="subnav" role="navigation">
+	<ul class="link-list">
 		<?php if ( bp_is_my_profile() ) bp_get_options_nav(); ?>
-
 		<?php if ( !bp_is_current_action( 'invites' ) ) : ?>
 
 			<li id="groups-order-select" class="last filter">
@@ -30,9 +28,8 @@
 			</li>
 
 		<?php endif; ?>
-
 	</ul>
-</div><!-- .item-list-tabs -->
+</div><!-- friends-filter -->
 
 <?php
 

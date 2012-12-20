@@ -1,3 +1,6 @@
+<?php 
+global $current_user;
+get_currentuserinfo(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,7 +34,7 @@
                         <strong class="logo"><a href="/">OrgerFun</a></strong>
                         <strong class="slogan">We put the fun back into organizing!</strong>
                     </div><!-- logo-box -->
-                    <?php require_once(TEMPLATEPATH . '/header-user-area.php'); ?>
+                    <?php require_once(TEMPLATEPATH . '/_header-user-area.php'); ?>
                 </div><!-- header-top -->
                 <div class="nav-area">
                     <div class="right-frame">
@@ -41,9 +44,9 @@
                         <a href="#" class="help-link">Need Help?</a>
                     </div><!-- right-frame -->
                     <ul id="nav">
-                        <li><a href="#">Meet the Team</a></li>
+                        <li><a href="/meet-the-team">Meet the Team</a></li>
                         <li class="find-link"><a href="#">Find Some Fun!</a></li>
-                        <li class="create-link"><a href="#">Be an Orger!</a></li>
+                        <li class="create-link"><a href="/sign-in">Be an Orger!</a></li>
                         <li><a href="#">Find my Buddy!</a></li>
                     </ul>
                     <?php require_once(TEMPLATEPATH . '/popups/popup-find.php'); ?>

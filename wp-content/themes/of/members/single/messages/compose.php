@@ -1,37 +1,43 @@
-<form action="<?php bp_messages_form_action('compose'); ?>" method="post" id="send_message_form" class="standard-form" role="main">
+<div class="block-sent-form">
+	<form action="<?php bp_messages_form_action('compose'); ?>" method="post" id="send_message_form" class="sent-form">
+		<fieldset>
+			<?php do_action( 'bp_before_messages_compose_content' ); ?>
+			<div class="form-item">
+				<label for="send-to-input">Send To (Username)</label>
+				<div class="sent-box">
+					<?php bp_message_get_recipient_tabs(); ?>
+					<input type="text" name="send-to-input" class="send-to-input form-text" id="send-to-input" />
+				</div>
+			</div><!-- form-item -->
 
-	<?php do_action( 'bp_before_messages_compose_content' ); ?>
+			<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
+				<div class="checkbox-item">
+					<input type="checkbox" id="send-notice" name="send-notice" class="form-checkbox" value="1" />
+					<label for="send-notice">This is a notice to all users.</label>
+				</div><!-- checkbox-item -->
+			<?php endif; ?>
 
-	<label for="send-to-input"><?php _e("Send To (Username or Friend's Name)", 'buddypress'); ?></label>
-	<ul class="first acfb-holder">
-		<li>
-			<?php bp_message_get_recipient_tabs(); ?>
-			<input type="text" name="send-to-input" class="send-to-input" id="send-to-input" />
-		</li>
-	</ul>
+			<div class="form-item">
+				<label for="subject">Subject</label>
+				<input type="text" name="subject" id="subject" class="form-text" value="<?php bp_messages_subject_value(); ?>" />
+			</div><!-- form-item -->
+			<div class="form-item">
+				<label for="message_content">Message</label>
+				<textarea name="content" id="message_content" rows="7" cols="50"><?php bp_messages_content_value(); ?></textarea>
+			</div><!-- form-item -->
 
-	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
-		<input type="checkbox" id="send-notice" name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
-	<?php endif; ?>
+			<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="<?php bp_message_get_recipient_usernames(); ?>" class="<?php bp_message_get_recipient_usernames(); ?>" />
 
-	<label for="subject"><?php _e( 'Subject', 'buddypress'); ?></label>
-	<input type="text" name="subject" id="subject" value="<?php bp_messages_subject_value(); ?>" />
+			<?php do_action( 'bp_after_messages_compose_content' ); ?>
 
-	<label for="content"><?php _e( 'Message', 'buddypress'); ?></label>
-	<textarea name="content" id="message_content" rows="15" cols="40"><?php bp_messages_content_value(); ?></textarea>
+			<div class="form-item">
+				<input type="submit" class="form-submit" value="Send" name="send" id="send" />
+			</div><!-- form-item -->
+			<?php wp_nonce_field( 'messages_send_message' ); ?>
+		</fieldset>
+	</form>
 
-	<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="<?php bp_message_get_recipient_usernames(); ?>" class="<?php bp_message_get_recipient_usernames(); ?>" />
-
-	<?php do_action( 'bp_after_messages_compose_content' ); ?>
-
-	<div class="submit">
-		<input type="submit" value="<?php _e( "Send Message", 'buddypress' ); ?>" name="send" id="send" />
-	</div>
-
-	<?php wp_nonce_field( 'messages_send_message' ); ?>
-</form>
-
-<script type="text/javascript">
-	document.getElementById("send-to-input").focus();
-</script>
-
+	<script type="text/javascript">
+		document.getElementById("send-to-input").focus();
+	</script>
+</div><!-- block-sent-form -->

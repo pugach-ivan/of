@@ -94,7 +94,8 @@ class BP_Friends_Component extends BP_Component {
 
 		// Add 'Friends' to the main navigation
 		$main_nav = array(
-			'name'                => sprintf( __( 'Friends <span>%d</span>', 'buddypress' ), friends_get_total_friend_count() ),
+			'name'                => sprintf( __( 'Friends <div class="amount-frame">
+										<div class="amount-box">%s<span>&nbsp;</span></div><!-- amount-box --></div><!--  amount-box -->', 'buddypress' ), friends_get_total_friend_count() ),
 			'slug'                => $this->slug,
 			'position'            => 60,
 			'screen_function'     => 'friends_screen_my_friends',

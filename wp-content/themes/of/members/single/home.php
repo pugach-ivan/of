@@ -9,31 +9,21 @@
 
 get_header( 'buddypress' ); ?>
 
-	<div id="content">
-		<div class="padder">
-
+	<div id="main">
+		<div id="contour-area">
+			<?php get_sidebar('right'); ?>
+			<?php get_sidebar('left'); ?>
 			<?php do_action( 'bp_before_member_home_content' ); ?>
-
-			<div id="item-header" role="complementary">
-
-				<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
-
-			</div><!-- #item-header -->
-
-			<div id="item-nav">
-				<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
-					<ul>
-
+			<div id="content">
+				<div class="topic-holder">
+					<h2><?php echo getMemberAreaHeader(); ?></h2>
+				</div><!-- topic-holder -->
+				<div class="block-top-menu">
+					<ul class="top-menu">
 						<?php bp_get_displayed_user_nav(); ?>
-
 						<?php do_action( 'bp_member_options_nav' ); ?>
-
 					</ul>
-				</div>
-			</div><!-- #item-nav -->
-
-			<div id="item-body">
-
+				</div><!-- block-top-menu -->
 				<?php do_action( 'bp_before_member_body' );
 
 				if ( bp_is_user_activity() || !bp_current_component() ) :
@@ -67,13 +57,8 @@ get_header( 'buddypress' ); ?>
 				endif;
 
 				do_action( 'bp_after_member_body' ); ?>
-
-			</div><!-- #item-body -->
-
+			</div><!-- content -->
 			<?php do_action( 'bp_after_member_home_content' ); ?>
-
-		</div><!-- .padder -->
-	</div><!-- #content -->
-
-<?php get_sidebar( 'buddypress' ); ?>
+		</div><!-- contour-area -->
+	</div><!-- main -->
 <?php get_footer( 'buddypress' ); ?>

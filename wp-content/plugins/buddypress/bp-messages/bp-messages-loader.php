@@ -101,7 +101,8 @@ class BP_Messages_Component extends BP_Component {
 	function setup_nav() {
 
 		$sub_nav = array();
-		$name    = sprintf( __( 'Messages <span>%s</span>', 'buddypress' ), bp_get_total_unread_messages_count() );
+		$name    = sprintf( __( 'Messages <div class="amount-frame">
+										<div class="amount-box">%s<span>&nbsp;</span></div><!-- amount-box --></div><!--  amount-box -->', 'buddypress' ), bp_get_total_unread_messages_count() );
 
 		// Add 'Messages' to the main navigation
 		$main_nav = array(

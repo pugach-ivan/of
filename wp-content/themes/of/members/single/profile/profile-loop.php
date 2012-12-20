@@ -9,30 +9,31 @@
 			<?php do_action( 'bp_before_profile_field_content' ); ?>
 
 			<div class="bp-widget <?php bp_the_profile_group_slug(); ?>">
+				
+				<div class="block-personal-table">
+					<table class="personal-table">
 
-				<h4><?php bp_the_profile_group_name(); ?></h4>
+						<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
-				<table class="profile-fields">
+							<?php if ( bp_field_has_data() ) : ?>
 
-					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
+								<tr<?php bp_field_css_class(); ?>>
 
-						<?php if ( bp_field_has_data() ) : ?>
+									<td class="col-1"><?php bp_the_profile_field_name(); ?></td>
 
-							<tr<?php bp_field_css_class(); ?>>
+									<td class="col-2"><?php bp_the_profile_field_value(); ?></td>
 
-								<td class="label"><?php bp_the_profile_field_name(); ?></td>
+								</tr>
 
-								<td class="data"><?php bp_the_profile_field_value(); ?></td>
+							<?php endif; ?>
 
-							</tr>
+							<?php do_action( 'bp_profile_field_item' ); ?>
 
-						<?php endif; ?>
+						<?php endwhile; ?>
 
-						<?php do_action( 'bp_profile_field_item' ); ?>
-
-					<?php endwhile; ?>
-
-				</table>
+					
+					</table>
+				</div><!-- block-personal-table -->
 			</div>
 
 			<?php do_action( 'bp_after_profile_field_content' ); ?>

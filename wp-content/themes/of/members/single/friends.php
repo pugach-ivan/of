@@ -9,12 +9,10 @@
 
 ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul>
+<div class="friends-filter item-list-tabs no-ajax" id="subnav" role="navigation">
+	<ul class="link-list">
 		<?php if ( bp_is_my_profile() ) bp_get_options_nav(); ?>
-
 		<?php if ( !bp_is_current_action( 'requests' ) ) : ?>
-
 			<li id="members-order-select" class="last filter">
 
 				<label for="members-friends"><?php _e( 'Order By:', 'buddypress' ); ?></label>
@@ -27,11 +25,9 @@
 
 				</select>
 			</li>
-
 		<?php endif; ?>
-
 	</ul>
-</div>
+</div><!-- friends-filter -->
 
 <?php
 

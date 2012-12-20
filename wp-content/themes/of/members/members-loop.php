@@ -15,92 +15,49 @@
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
-
-		<div class="pag-count" id="member-dir-count-top">
-
-			<?php bp_members_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="member-dir-pag-top">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
-
 	<?php do_action( 'bp_before_directory_members_list' ); ?>
 
-	<ul id="members-list" class="item-list" role="main">
+	<div id="members-list" class="item-list" role="main">
 
-	<?php while ( bp_members() ) : bp_the_member(); ?>
+		<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<li>
-			<div class="item-avatar">
-				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
-			</div>
+			<div class="friends-box">
+				<div class="img-frame"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a></div><!-- img-frame -->
+				<div class="txt-frame">
+					<p>From <a href="#"><?php bp_member_name(); ?></a></p>
+					<p>@<?php bp_displayed_user_username(); ?></p>
+					<?php do_action( 'bp_directory_members_item' ); ?>
+				</div><!-- txt-frame -->
+				<div class="action">
 
-			<div class="item">
-				<div class="item-title">
-					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a>
-
-					<?php if ( bp_get_member_latest_update() ) : ?>
-
-						<span class="update"> <?php bp_member_latest_update(); ?></span>
-
-					<?php endif; ?>
+					<?php do_action( 'bp_directory_members_actions' ); ?>
 
 				</div>
+			</div><!-- friends-box -->
 
-				<div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div>
+		<?php endwhile; ?>
 
-				<?php do_action( 'bp_directory_members_item' ); ?>
-
-				<?php
-				 /***
-				  * If you want to show specific profile fields here you can,
-				  * but it'll add an extra query for each member in the loop
-				  * (only one regardless of the number of fields you show):
-				  *
-				  * bp_member_profile_data( 'field=the field name' );
-				  */
-				?>
-			</div>
-
-			<div class="action">
-
-				<?php do_action( 'bp_directory_members_actions' ); ?>
-
-			</div>
-
-			<div class="clear"></div>
-		</li>
-
-	<?php endwhile; ?>
-
-	</ul>
+	</div>
 
 	<?php do_action( 'bp_after_directory_members_list' ); ?>
 
 	<?php bp_member_hidden_fields(); ?>
 
-	<div id="pag-bottom" class="pagination">
+	<div class="viewing-holder">
+		<div class="viewing-box">
+			<div class="pag-count" id="member-dir-count-bottom">
 
-		<div class="pag-count" id="member-dir-count-bottom">
+				<?php bp_members_pagination_count(); ?>
 
-			<?php bp_members_pagination_count(); ?>
+			</div>
 
+			<div class="pagination-links" id="member-dir-pag-bottom">
+
+				<?php bp_members_pagination_links(); ?>
+
+			</div>
 		</div>
-
-		<div class="pagination-links" id="member-dir-pag-bottom">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
+	</div><!-- viewing-holder -->
 
 <?php else: ?>
 

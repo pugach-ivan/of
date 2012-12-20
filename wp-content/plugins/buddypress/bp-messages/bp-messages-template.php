@@ -433,22 +433,29 @@ function bp_messages_options() {
 
 	<?php _e( 'Select:', 'buddypress' ) ?>
 
-	<select name="message-type-select" id="message-type-select">
-		<option value=""></option>
-		<option value="read"><?php _e('Read', 'buddypress') ?></option>
-		<option value="unread"><?php _e('Unread', 'buddypress') ?></option>
-		<option value="all"><?php _e('All', 'buddypress') ?></option>
-	</select> &nbsp;
+	<div class="form-filter-friends">
+		<fieldset>
+			<div class="form-item">
+				<label for="message-type-select">Select</label>
+				<select name="message-type-select" id="message-type-select">
+					<option value="">Selet option</option>
+					<option value="read"><?php _e('Read', 'buddypress') ?></option>
+					<option value="unread"><?php _e('Unread', 'buddypress') ?></option>
+					<option value="all"><?php _e('All', 'buddypress') ?></option>
+				</select>
+			</div>
+		</fieldset>
+	</div>
 
-	<?php if ( ! bp_is_current_action( 'sentbox' ) && bp_is_current_action( 'notices' ) ) : ?>
+	<ul class="link-list">
+		<?php if ( ! bp_is_current_action( 'sentbox' ) && bp_is_current_action( 'notices' ) ) : ?>
 
-		<a href="#" id="mark_as_read"><?php _e('Mark as Read', 'buddypress') ?></a> &nbsp;
-		<a href="#" id="mark_as_unread"><?php _e('Mark as Unread', 'buddypress') ?></a> &nbsp;
+			<li><a href="#" id="mark_as_read"><?php _e('Mark as Read', 'buddypress') ?></a></li>
+			<li><a href="#" id="mark_as_unread"><?php _e('Mark as Unread', 'buddypress') ?></a></li>
 
-	<?php endif; ?>
-
-	<a href="#" id="delete_<?php echo bp_current_action(); ?>_messages"><?php _e( 'Delete Selected', 'buddypress' ); ?></a> &nbsp;
-
+		<?php endif; ?>
+		<li><a href="#" id="delete_<?php echo bp_current_action(); ?>_messages"><?php _e( 'Delete Selected', 'buddypress' ); ?></a></li>
+	</ul>
 <?php
 }
 
